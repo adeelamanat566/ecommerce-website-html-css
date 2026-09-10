@@ -1,6 +1,6 @@
 services:
   sql:
-    image:  adeelamanat566/mysql
+    image: mysql
     container_name: mysql
     ports: 
       - "3306:3306"
@@ -13,7 +13,8 @@ services:
 
 
   newapp:
-    image: adeelamanat566/new-groce-app 
+    build:
+      context: .
     container_name: test
     environment: 
       MYSQL_HOST: mysql
