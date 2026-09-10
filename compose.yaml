@@ -1,0 +1,25 @@
+services:
+  sql:
+    image:  adeelamanat566/mysql
+    container_name: mysql
+    ports: 
+      - "3306:3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: adeel  
+      MYSQL_DATABASE: inventory_db
+    
+
+
+
+
+  newapp:
+    image: adeelamanat566/new-groce-app 
+    container_name: test
+    environment: 
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: adeel
+      MYSQL_DATABASE: inventory_db
+    ports:
+      - "5000:5000"
+    
