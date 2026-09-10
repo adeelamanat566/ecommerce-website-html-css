@@ -10,11 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t myapp .
+      - name: Build Docker containers
+        run: docker compose build
 
-      - name: Run Docker container
-        run: docker run -d -p 5000:5000 --name myapp myapp
+      - name: Run Docker containers
+        run: docker compose up -d
+
+      - name: Check running containers
+        run: docker compose ps
+
+      - name: Check application logs
+        run: docker compose logs --tail=50
